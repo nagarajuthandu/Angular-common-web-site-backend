@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { Menu, MenuDocument } from './schema/menu.schema';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class MenuService {
     return `This action updates a #${id} menu`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menu`;
+  async remove(id: ObjectId) {
+    return this.menuModel.findByIdAndDelete(id);
   }
 }

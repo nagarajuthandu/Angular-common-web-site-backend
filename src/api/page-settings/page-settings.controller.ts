@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { PageSettingsService } from './page-settings.service';
 import { CreatePageSettingDto } from './dto/create-page-setting.dto';
 import { UpdatePageSettingDto } from './dto/update-page-setting.dto';
+import { ObjectId } from 'mongoose';
 
 @Controller('page-settings')
 export class PageSettingsController {
@@ -25,5 +26,10 @@ export class PageSettingsController {
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updatePageSettingDto: UpdatePageSettingDto) {
     return await this.pageSettingsService.update(id, updatePageSettingDto);
+  }
+
+  @Delete(':id')
+  async remove(@Param('id') id: ObjectId) {
+    return await this.pageSettingsService.remove(id);
   }
 }

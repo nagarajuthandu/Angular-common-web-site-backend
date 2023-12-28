@@ -1,7 +1,7 @@
 // page-settings.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { CreatePageSettingDto } from './dto/create-page-setting.dto';
 import { UpdatePageSettingDto } from './dto/update-page-setting.dto';
 import { PageSetting, PageSettingDocument } from './schema/page-settings.schema';
@@ -33,5 +33,9 @@ export class PageSettingsService {
       throw new NotFoundException('Page setting not found');
     }
     return updatedPageSetting;
+  }
+
+  async remove(id: ObjectId) {
+    return this.pageSettingModel.findByIdAndDelete(id);
   }
 }

@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
+import { ObjectId } from 'mongoose';
 
 @Controller('menu')
 export class MenuController {
@@ -28,7 +29,7 @@ export class MenuController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.menuService.remove(+id);
+  async remove(@Param('id') id: ObjectId) {
+    return await this.menuService.remove(id);
   }
 }
