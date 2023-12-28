@@ -8,6 +8,9 @@ import { UsersModule } from './api/users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './api/auth/auth.module';
 import jwtConfig from './config/env/jwt.config';
+import { WidgetsModule } from './api/widgets/widgets.module';
+import { PageSettingsModule } from './api/page-settings/page-settings.module';
+import { MenuModule } from './api/menu/menu.module';
 
 
 @Module({
@@ -29,7 +32,10 @@ import jwtConfig from './config/env/jwt.config';
     },
   }),
   AuthModule,
-  UsersModule],
+  UsersModule,
+  WidgetsModule,
+  PageSettingsModule,
+  MenuModule],
   controllers: [AppController],
   providers: [AppService],
 })
