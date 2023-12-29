@@ -27,6 +27,7 @@ import { MenuModule } from './api/menu/menu.module';
       const port = configService.get<number>(`database.${env}.port`);
       const name = configService.get<string>(`database.${env}.name`);
       const uri = `mongodb://${host}:${port}/${name}`
+      console.log("Environemnt",env)
       console.log({uri})
       return { uri: uri };
     },
