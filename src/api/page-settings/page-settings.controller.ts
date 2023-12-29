@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Query } from '@nestjs/common';
 import { PageSettingsService } from './page-settings.service';
 import { CreatePageSettingDto } from './dto/create-page-setting.dto';
 import { UpdatePageSettingDto } from './dto/update-page-setting.dto';
@@ -23,7 +23,7 @@ export class PageSettingsController {
     return await this.pageSettingsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   async update(@Param('id') id: string, @Body() updatePageSettingDto: UpdatePageSettingDto) {
     return await this.pageSettingsService.update(id, updatePageSettingDto);
   }

@@ -14,4 +14,8 @@ export class AuthService {
       }
       return user;
   }
+  async createUser(req:any): Promise<UserDocument | null>  {
+    const user = await this.userModel.create(req);
+    return user
+  }
 }
