@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { Widget, WidgetSchema } from '../../widgets/schema/widgets.schema';
+import { WidgetContent } from 'src/api/widget-content/schema/widget-content.schema';
 
 export type PageSettingDocument = PageSetting & Document;
 
@@ -9,8 +10,8 @@ export class PageSetting {
   @Prop({ required: true })
   pagename: string;
 
-  @Prop({ type: [mongoose.Schema.Types.ObjectId], ref:'Widget' })
-  widgets: Widget;
+  @Prop({ type: [mongoose.Schema.Types.ObjectId], ref:'WidgetContent' })
+  WidgetContent: WidgetContent;
 }
 
 export const PageSettingSchema = SchemaFactory.createForClass(PageSetting);

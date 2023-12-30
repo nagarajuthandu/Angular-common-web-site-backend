@@ -1,5 +1,5 @@
 // widgets.controller.ts
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { WidgetsService } from './widgets.service';
 import { CreateWidgetDto } from './dto/create-widget.dto';
 import { UpdateWidgetDto } from './dto/update-widget.dto'
@@ -15,12 +15,12 @@ export class WidgetsController {
   }
 
   @Get()
-  findAll() {
-    return this.widgetsService.findAll();
+  async findAll(@Query() query:any) {
+    return await this.widgetsService.findAll(query);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.widgetsService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.widgetsService.findOne(id);
   }
 }

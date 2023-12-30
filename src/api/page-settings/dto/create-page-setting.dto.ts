@@ -1,7 +1,8 @@
 import { IsNotEmpty, ValidateNested } from "class-validator";
-import { Widget } from "../../widgets/schema/widgets.schema";
 import { Type } from 'class-transformer';
 import { Types } from "mongoose";
+import { WidgetContent } from "src/api/widget-content/schema/widget-content.schema";
+import { Widget } from "src/api/widgets/schema/widgets.schema";
 
 export class CreatePageSettingDto {
     @IsNotEmpty()
@@ -9,5 +10,5 @@ export class CreatePageSettingDto {
 
     @ValidateNested({ each: true })
     @Type(() => Types.ObjectId)
-    widgets: Widget[];
+    WidgetContent: WidgetContent[];
 }

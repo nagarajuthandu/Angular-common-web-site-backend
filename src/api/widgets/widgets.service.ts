@@ -14,12 +14,12 @@ export class WidgetsService {
     return createdWidget.save();
   }
 
-  async findAll(): Promise<Widget[]> {
-    return this.widgetModel.find().exec();
+  async findAll(query: any): Promise<Widget[]> {
+    return this.widgetModel.find(query);
   }
 
   async findOne(id: string): Promise<Widget> {
-    return this.widgetModel.findById(id).exec();
+    return this.widgetModel.findById(id);
   }
 
   async update(id: string, updateWidgetDto: CreateWidgetDto): Promise<Widget> {

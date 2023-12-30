@@ -11,6 +11,7 @@ import jwtConfig from './config/env/jwt.config';
 import { WidgetsModule } from './api/widgets/widgets.module';
 import { PageSettingsModule } from './api/page-settings/page-settings.module';
 import { MenuModule } from './api/menu/menu.module';
+import { WidgetContentModule } from './api/widget-content/widget-content.module';
 
 
 @Module({
@@ -36,7 +37,8 @@ import { MenuModule } from './api/menu/menu.module';
   UsersModule,
   WidgetsModule,
   PageSettingsModule,
-  MenuModule],
+  MenuModule,
+  WidgetContentModule],
   controllers: [AppController],
   providers: [AppService],
 })

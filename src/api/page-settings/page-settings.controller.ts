@@ -4,7 +4,7 @@ import { CreatePageSettingDto } from './dto/create-page-setting.dto';
 import { UpdatePageSettingDto } from './dto/update-page-setting.dto';
 import { ObjectId } from 'mongoose';
 
-@Controller('page-settings')
+@Controller('page')
 export class PageSettingsController {
   constructor(private readonly pageSettingsService: PageSettingsService) {}
 

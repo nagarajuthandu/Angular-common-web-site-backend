@@ -1,10 +1,10 @@
-// page-settings.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { CreatePageSettingDto } from './dto/create-page-setting.dto';
 import { UpdatePageSettingDto } from './dto/update-page-setting.dto';
 import { PageSetting, PageSettingDocument } from './schema/page-settings.schema';
+import { populate } from 'dotenv';
 
 @Injectable()
 export class PageSettingsService {
@@ -16,7 +16,13 @@ export class PageSettingsService {
   }
 
   async findAll(query:any): Promise<PageSetting[]> {
-    return this.pageSettingModel.find(query).populate('widgets');
+    return this.pageSettingModel.find(query).populate({
+      path: 'WidgetContent',
+      populate: {
+        path: 'widget',
+        model: 'Widget',
+      },
+    }).exec();
   }
 
   async findOne(id: string): Promise<PageSetting> {
