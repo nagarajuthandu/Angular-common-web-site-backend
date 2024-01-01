@@ -10,6 +10,9 @@ export class PageSetting {
   @Prop({ required: true })
   pagename: string;
 
+  @Prop({ required: true })
+  displayName: string
+
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref:'WidgetContent' })
   WidgetContent: WidgetContent;
 }

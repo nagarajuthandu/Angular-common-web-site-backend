@@ -8,6 +8,9 @@ export class CreatePageSettingDto {
     @IsNotEmpty()
     pagename: string;
 
+    @IsNotEmpty()
+    displayName:string
+
     @ValidateNested({ each: true })
     @Type(() => Types.ObjectId)
     WidgetContent: WidgetContent[];
