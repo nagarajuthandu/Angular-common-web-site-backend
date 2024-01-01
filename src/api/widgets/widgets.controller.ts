@@ -8,6 +8,10 @@ import { UpdateWidgetDto } from './dto/update-widget.dto'
 export class WidgetsController {
   constructor(private readonly widgetsService: WidgetsService) {}
 
+  async onApplicationBootstrap() {
+    await this.widgetsService.createWidgetsIfNotExist();
+  }
+
   @Post()
   async create(@Body() createWidgetDto: CreateWidgetDto) {
     console.log("createWidgetDto",createWidgetDto)

@@ -8,6 +8,8 @@ export class CreateWidgetContentDto {
     @Type(()=> Types.ObjectId)
     widget:Widget
 
+    title:string
+
     content:Record<string, any>;
 
     order:number

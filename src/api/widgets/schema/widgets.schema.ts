@@ -9,7 +9,10 @@ export class Widget {
   type: string;
 
   @Prop({ required: true })
-  title: string
+  name: string
+
+  @Prop({ required: true })
+  displayName: string
 }
 
 export const WidgetSchema = SchemaFactory.createForClass(Widget);

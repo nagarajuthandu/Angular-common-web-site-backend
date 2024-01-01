@@ -1,5 +1,5 @@
 export class CreateWidgetDto {
   type: string;
-  content: string;
-  src: string;
+  name: string;
+  displayName: string;
 }

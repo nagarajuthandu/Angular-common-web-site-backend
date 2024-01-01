@@ -25,4 +25,19 @@ export class WidgetsService {
   async update(id: string, updateWidgetDto: CreateWidgetDto): Promise<Widget> {
     return this.widgetModel.findByIdAndUpdate(id, updateWidgetDto, { new: true }).exec();
   }
+
+  async createWidgetsIfNotExist(): Promise<void> {
+    const widgetTypesToCreate: CreateWidgetDto[] = [
+      { type: 'carousel', name: 'Carousel', displayName: 'Carousel' },
+      { type: 'cards', name: 'Cards', displayName: 'Cards' },
+    ];
+
+    for (const widgetType of widgetTypesToCreate) {
+      const existingWidget = await this.widgetModel.findOne({ type: widgetType.type });
+
+      if (!existingWidget) {
+        await this.create(widgetType);
+      }
+    }
+  }
 }

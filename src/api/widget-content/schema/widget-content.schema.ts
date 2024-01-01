@@ -13,6 +13,9 @@ export class WidgetContent {
   content: Record<string, any>;
 
   @Prop()
+  title:string
+
+  @Prop()
   order:number
 }
 
